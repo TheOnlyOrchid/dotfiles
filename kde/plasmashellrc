@@ -2,6 +2,7 @@
 floating=1
 panelLengthMode=1
 panelOpacity=2
+panelVisibility=3
 
 [PlasmaViews][Panel 2][Defaults]
 thickness=36

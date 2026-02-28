@@ -11,7 +11,6 @@ PlasmoidItem {
 
     property int dayCount: 0
 
-    // Executable DataSource (plasma5support in Plasma 6)
     P5Support.DataSource {
         id: executable
         engine: "executable"
@@ -38,13 +37,18 @@ PlasmoidItem {
 
     Component.onCompleted: refreshDays()
 
-    fullRepresentation: Rectangle {
+    fullRepresentation: Item {
         implicitWidth: 240
         implicitHeight: 100
-        radius: 14
-        color: "#cc1E1E2E"
-        border.color: "#7BC96F"
-        border.width: 2
+
+        // Green border overlay — sits on top of Plasma's own rounded dark background
+        Rectangle {
+            anchors.fill: parent
+            radius: 8
+            color: "transparent"
+            border.color: "#7BC96F"
+            border.width: 2
+        }
 
         ColumnLayout {
             anchors.centerIn: parent
