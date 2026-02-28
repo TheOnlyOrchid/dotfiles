@@ -1,0 +1,14 @@
+{
+    "KPlugin": {
+        "Authors": [{"Email": "", "Name": "orchid"}],
+        "Category": "",
+        "Description": "Sprigatito — cozy forest dark theme. Soft greens, cream, dark charcoal.",
+        "EnabledByDefault": true,
+        "Id": "Sprigatito",
+        "License": "GPL-2.0-or-later",
+        "Name": "Sprigatito",
+        "Version": "1.0",
+        "Website": ""
+    },
+    "X-Plasma-API": "5.0"
+}

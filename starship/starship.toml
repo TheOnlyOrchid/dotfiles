@@ -1,0 +1,99 @@
+# Starship prompt — Sprigatito theme 🌿
+# Cozy forest vibes: greens, cream, brown
+
+format = """
+[╭─](fg:#3a3a52) $directory$git_branch$git_status$python$nodejs$rust$golang$package
+[╰─](fg:#3a3a52)$character"""
+
+[directory]
+style = "bold fg:#A8E6CF"
+format = "[ 󰉖 $path]($style) "
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 docs"
+"Downloads" = " dl"
+"Music" = "󰝚 music"
+"Pictures" = "󰉔 pics"
+
+[git_branch]
+symbol = " "
+style = "bold fg:#7BC96F"
+format = "[on $symbol$branch]($style) "
+
+[git_status]
+style = "fg:#8B5E3C"
+format = '([$all_status$ahead_behind]($style) )'
+conflicted = "⚡"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "󰐕 "
+stashed = "󰆼 "
+modified = "󰏫 "
+staged = "[ ++$count](fg:#7BC96F)"
+renamed = "󰑕 "
+deleted = "󰍶 "
+
+[character]
+success_symbol = "[❯](bold fg:#7BC96F)"
+error_symbol = "[❯](bold fg:#E06C75)"
+vimcmd_symbol = "[❮](bold fg:#A8E6CF)"
+
+[python]
+symbol = "󰌠 "
+style = "fg:#A8E6CF"
+format = "[${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
+
+[nodejs]
+symbol = " "
+style = "fg:#7BC96F"
+format = "[$symbol($version )]($style)"
+
+[rust]
+symbol = "󱘗 "
+style = "fg:#C8A96E"
+format = "[$symbol($version )]($style)"
+
+[golang]
+symbol = "󰟓 "
+style = "fg:#A8E6CF"
+format = "[$symbol($version )]($style)"
+
+[package]
+symbol = "󰏗 "
+style = "fg:#8B5E3C"
+format = "[$symbol$version]($style) "
+
+[battery]
+full_symbol = "󰁹 "
+charging_symbol = "󰂄 "
+discharging_symbol = "󰂃 "
+unknown_symbol = "󰁽 "
+empty_symbol = "󰂎 "
+format = "[$symbol$percentage]($style) "
+
+[[battery.display]]
+threshold = 50
+style = "fg:#C8A96E"
+
+[[battery.display]]
+threshold = 20
+style = "bold fg:#E06C75"
+
+[cmd_duration]
+min_time = 2000
+style = "fg:#8B5E3C"
+format = "[ 󱎫 $duration]($style) "
+
+[username]
+show_always = false
+style_user = "fg:#7BC96F bold"
+style_root = "fg:#E06C75 bold"
+format = "[$user]($style) "
+
+[hostname]
+ssh_only = true
+style = "fg:#A8E6CF bold"
+format = "[@$hostname]($style) "

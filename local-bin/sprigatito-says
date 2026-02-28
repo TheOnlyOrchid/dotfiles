@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# 🌿 sprigatito-says — daily wisdom from the forest cat
+
+G='\033[38;2;123;201;111m'
+M='\033[38;2;168;230;207m'
+C='\033[38;2;245;243;231m'
+B='\033[38;2;139;94;60m'
+RESET='\033[0m'
+
+QUOTES=(
+    "Every terminal session is a fresh start. Except yours. You know what you did."
+    "The best password is the one you forgot and had to reset five minutes ago."
+    "Have you tried turning it off and on again? I'm Sprigatito. That's my whole advice."
+    "nmap is not a personality. but it's a start."
+    "Commit your code. Commit to your bit. Commit to the forest."
+    "There is no path forward without first installing the dependencies."
+    "You are doing great. Statistically. Somewhere, someone is doing worse."
+    "A cozy forest awaits on the other side of this CTF challenge."
+    "If it works in the VM, ship it. (do not ship it.)"
+    "The incident counter is a feature, not a flaw. It's called character."
+    "sudo make me a sandwich is the only valid use of elevated privileges."
+    "Leaf it to me. I have no idea what I'm doing either."
+    "Documentation? We write documentation? (please write documentation)"
+    "printf debugging is valid. printf debugging has always been valid."
+    "The grass is greener on your side actually. I'm a grass cat. I would know."
+)
+
+IDX=$(( RANDOM % ${#QUOTES[@]} ))
+
+echo
+echo -e "${G}  🌿 Sprigatito says:${RESET}"
+echo -e "${M}  ❝${C} ${QUOTES[$IDX]} ${M}❞${RESET}"
+echo

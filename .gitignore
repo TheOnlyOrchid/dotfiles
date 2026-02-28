@@ -1,0 +1,12 @@
+# Never commit personal state or secrets
+*.key
+*.pem
+*.secret
+id_rsa*
+id_ed25519*
+.ssh/
+# Local machine state
+incident_date
+# Large binaries (optional — comment out if you want to keep the png)
+# *.svg
+# *.png

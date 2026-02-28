@@ -1,0 +1,20 @@
+{
+    "KPlugin": {
+        "Id": "com.sprigatito.incident",
+        "Name": "Days Since Last Incident",
+        "Description": "Tracks the number of days since the last incident. You know the one.",
+        "Icon": "face-embarrassed",
+        "Category": "Utilities",
+        "ServiceTypes": ["Plasma/Applet"],
+        "Version": "1.0",
+        "Website": "",
+        "Authors": [
+            {
+                "Email": "",
+                "Name": "orchid"
+            }
+        ],
+        "License": "GPL-2.0-or-later",
+        "EnabledByDefault": true
+    }
+}

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "source": "~/.config/fastfetch/sprigatito.txt",
+    "color": {
+      "1": "green",
+      "2": "bright_green"
+    },
+    "padding": {
+      "top": 0,
+      "left": 1,
+      "right": 2
+    }
+  },
+  "display": {
+    "separator": "  ",
+    "color": {
+      "keys": "green",
+      "title": "bright_green"
+    }
+  },
+  "modules": [
+    {
+      "type": "title",
+      "format": "{user-name}@{host-name}"
+    },
+    "separator",
+    {
+      "type": "os",
+      "key": "  OS"
+    },
+    {
+      "type": "kernel",
+      "key": "  Kernel"
+    },
+    {
+      "type": "wm",
+      "key": "  WM"
+    },
+    {
+      "type": "de",
+      "key": "  DE"
+    },
+    {
+      "type": "shell",
+      "key": "  Shell"
+    },
+    {
+      "type": "terminal",
+      "key": "  Terminal"
+    },
+    {
+      "type": "font",
+      "key": "  Font"
+    },
+    {
+      "type": "cpu",
+      "key": "  CPU"
+    },
+    {
+      "type": "memory",
+      "key": "  RAM"
+    },
+    {
+      "type": "uptime",
+      "key": "  Uptime"
+    },
+    {
+      "type": "packages",
+      "key": "  Packages"
+    },
+    "separator",
+    {
+      "type": "colors",
+      "paddingLeft": 1,
+      "symbol": "circle"
+    }
+  ]
+}

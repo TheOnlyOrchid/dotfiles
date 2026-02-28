@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# 🌿 ididanoopsie — resets the days since last incident counter
+
+G='\033[38;2;123;201;111m'
+C='\033[38;2;245;243;231m'
+B='\033[38;2;139;94;60m'
+RESET='\033[0m'
+
+INCIDENT_FILE="$HOME/.local/share/sprigatito-rice/incident_date"
+
+# Read old count if it exists
+if [[ -f "$INCIDENT_FILE" ]]; then
+    OLD_DATE=$(cat "$INCIDENT_FILE")
+    TODAY=$(date +%Y-%m-%d)
+    OLD_DAYS=$(( ( $(date -d "$TODAY" +%s) - $(date -d "$OLD_DATE" +%s) ) / 86400 )) 2>/dev/null || OLD_DAYS=0
+else
+    OLD_DAYS=0
+fi
+
+# Reset
+mkdir -p "$(dirname "$INCIDENT_FILE")"
+date +%Y-%m-%d > "$INCIDENT_FILE"
+
+echo
+echo -e "${B}  ╔══════════════════════════════════════════╗${RESET}"
+echo -e "${B}  ║        🌿 oh no. again??                 ║${RESET}"
+echo -e "${B}  ╚══════════════════════════════════════════╝${RESET}"
+echo
+if [[ $OLD_DAYS -gt 0 ]]; then
+    echo -e "${C}  The streak of ${G}${OLD_DAYS} days${C} has been... ended.${RESET}"
+    echo -e "${C}  Counter reset to 0. The widget has been informed.${RESET}"
+    echo -e "${C}  Your friends will hear about this.${RESET}"
+else
+    echo -e "${C}  Counter reset. Honestly, were you even trying?${RESET}"
+fi
+echo

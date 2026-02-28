@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# 🌿 helpme — the field guide to orchid's local commands
+# (written with love, mild sarcasm, and too many emoji)
+
+# ── Colours ──────────────────────────────────────────────────────────────────
+G='\033[38;2;123;201;111m'   # Leaf Green
+M='\033[38;2;168;230;207m'   # Mint Green
+C='\033[38;2;245;243;231m'   # Cream
+B='\033[38;2;139;94;60m'     # Brown Accent
+D='\033[38;2;150;150;170m'   # Dim
+BOLD='\033[1m'
+RESET='\033[0m'
+
+echo
+echo -e "${G}${BOLD}╔══════════════════════════════════════════════════════════════╗${RESET}"
+echo -e "${G}${BOLD}║  🌿  orchid's command compendium  ·  read or suffer          ║${RESET}"
+echo -e "${G}${BOLD}╚══════════════════════════════════════════════════════════════╝${RESET}"
+echo
+
+echo -e "${M}${BOLD}  STUDY / HACKING${RESET}"
+echo -e "${D}  ─────────────────────────────────────────────────────────────${RESET}"
+echo -e "  ${G}${BOLD}tryhackme${RESET} ${C}[workspace]${RESET}"
+echo -e "    ${C}Opens Firefox (TryHackMe dashboard) + Obsidian (cybernotes)${RESET}"
+echo -e "    ${D}Workspace defaults to 2. Because that's where the crime happens.${RESET}"
+echo
+echo -e "  ${G}${BOLD}tryhackme update${RESET} ${C}\"commit message\"${RESET}"
+echo -e "    ${C}Commits and pushes your cybernotes to GitHub.${RESET}"
+echo -e "    ${D}Useful for: after you've taken notes, before you forget everything.${RESET}"
+echo
+
+echo -e "${M}${BOLD}  INCIDENT MANAGEMENT${RESET}"
+echo -e "${D}  ─────────────────────────────────────────────────────────────${RESET}"
+echo -e "  ${G}${BOLD}ididanoopsie${RESET}"
+echo -e "    ${C}Resets the 'days since last incident' counter to today.${RESET}"
+echo -e "    ${D}We're not here to judge. We're just here to count.${RESET}"
+echo
+
+echo -e "${M}${BOLD}  QUALITY OF LIFE (aliases)${RESET}"
+echo -e "${D}  ─────────────────────────────────────────────────────────────${RESET}"
+echo -e "  ${G}${BOLD}please${RESET} ${C}<command>${RESET}"
+echo -e "    ${C}sudo, but with manners. same result, better vibes.${RESET}"
+echo
+echo -e "  ${G}${BOLD}oops${RESET}"
+echo -e "    ${C}Amends your last git commit without changing the message.${RESET}"
+echo -e "    ${D}For when you committed with a typo 0.4 seconds ago.${RESET}"
+echo
+echo -e "  ${G}${BOLD}yeet${RESET} ${C}<path>${RESET}"
+echo -e "    ${C}rm -rf with a confirmation prompt. Because you've been hurt before.${RESET}"
+echo
+echo -e "  ${G}${BOLD}sprigatito-says${RESET}"
+echo -e "    ${C}Prints a random Sprigatito wisdom quote.${RESET}"
+echo -e "    ${D}Absolutely essential. Career-defining feature.${RESET}"
+echo
+
+echo -e "${M}${BOLD}  DOTFILES & BACKUP${RESET}"
+echo -e "${D}  ─────────────────────────────────────────────────────────────${RESET}"
+echo -e "  ${G}${BOLD}backupconfigs${RESET}"
+echo -e "    ${C}Backs up the entire rice to GitHub (TheOnlyOrchid/dotfiles).${RESET}"
+echo -e "    ${D}Sanitises personal paths. Safe to push. Very responsible of you.${RESET}"
+echo
+
+echo -e "${M}${BOLD}  META${RESET}"
+echo -e "${D}  ─────────────────────────────────────────────────────────────${RESET}"
+echo -e "  ${G}${BOLD}helpme${RESET}"
+echo -e "    ${C}You're reading it. Gold star for you. 🌟${RESET}"
+echo
+echo -e "${B}${BOLD}  tip:${RESET} ${D}all commands live in ~/local/bin/ — feel free to poke around${RESET}"
+echo -e "${B}${BOLD}  tip:${RESET} ${D}you made this rice yourself (with some help). be proud. 🌿${RESET}"
+echo

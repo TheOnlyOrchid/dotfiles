@@ -1,0 +1,7 @@
+[Common]
+ShadowSize=ShadowMedium
+ShadowStrength=60
+
+[Windeco]
+DrawBackgroundGradient=false
+TitleAlignment=Center

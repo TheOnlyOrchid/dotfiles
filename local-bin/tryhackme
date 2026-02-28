@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# 🌿 tryhackme — study mode activator
+
+G='\033[38;2;123;201;111m'
+C='\033[38;2;245;243;231m'
+D='\033[38;2;150;150;170m'
+RESET='\033[0m'
+
+# ── Subcommand: update ────────────────────────────────────────────────────────
+if [[ "$1" == "update" ]]; then
+    MSG="${*:2}"
+    if [[ -z "$MSG" ]]; then
+        echo -e "${G}🌿${RESET} Usage: ${C}tryhackme update \"your commit message\"${RESET}"
+        exit 1
+    fi
+
+    NOTES_DIR="$HOME/Documents/cybernotes"
+
+    if [[ ! -d "$NOTES_DIR/.git" ]]; then
+        echo -e "${G}🌿${RESET} ${C}cybernotes doesn't look like a git repo at $NOTES_DIR${RESET}"
+        exit 1
+    fi
+
+    echo -e "${G}🌿${RESET} ${C}Syncing cybernotes...${RESET}"
+    cd "$NOTES_DIR" || exit 1
+    git add -A
+    git commit -m "$MSG"
+    git push
+    echo -e "${G}🌿${RESET} ${C}Done! Notes pushed to GitHub. Very professional.${RESET}"
+    exit 0
+fi
+
+# ── Normal launch: open Firefox + Obsidian on workspace N ────────────────────
+WORKSPACE="${1:-2}"
+
+# Validate it's a number
+if ! [[ "$WORKSPACE" =~ ^[0-9]+$ ]]; then
+    echo -e "${G}🌿${RESET} Usage: ${C}tryhackme [workspace_number]${RESET}   (default: 2)"
+    echo -e "       ${C}tryhackme update \"message\"${RESET}"
+    exit 1
+fi
+
+echo -e "${G}🌿${RESET} ${C}Switching to workspace ${WORKSPACE}...${RESET}"
+
+# Switch to the target desktop (0-indexed in KWin)
+WS_INDEX=$(( WORKSPACE - 1 ))
+qdbus6 org.kde.KWin /KWin setCurrentDesktop "$WS_INDEX" 2>/dev/null \
+    || wmctrl -s "$WS_INDEX" 2>/dev/null \
+    || echo -e "${D}  (couldn't switch desktop — do it manually if needed)${RESET}"
+
+sleep 0.3
+
+echo -e "${G}🌿${RESET} ${C}Launching Firefox → TryHackMe...${RESET}"
+firefox "https://tryhackme.com/dashboard" &
+
+sleep 0.5
+
+echo -e "${G}🌿${RESET} ${C}Opening Obsidian → cybernotes...${RESET}"
+obsidian "obsidian://open?vault=cybernotes" &
+
+echo -e "${G}🌿${RESET} ${D}Study mode engaged. No pressure. (Some pressure.)${RESET}"
