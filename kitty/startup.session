@@ -1,1 +1,1 @@
-launch --hold bash -c '~/.config/kitty/startup.sh'
+launch $HOME/.config/kitty/startup.sh

@@ -1,5 +1,7 @@
 [Keyboard]
 NumLock=1
+RepeatRate=50
 
 [Mouse]
 cursorSize=24
+cursorTheme=Animated-Mew-Cursor

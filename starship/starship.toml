@@ -1,99 +1,121 @@
-# Starship prompt — Sprigatito theme 🌿
-# Cozy forest vibes: greens, cream, brown
+# Starship prompt — KawaiiShell 🎀
+# Needy streamer overload: pink badges, hearts, ribbon separators
 
 format = """
-[╭─](fg:#3a3a52) $directory$git_branch$git_status$python$nodejs$rust$golang$package
-[╰─](fg:#3a3a52)$character"""
+[](fg:#3D2248)\
+$directory\
+[](bg:#5A2D5C fg:#3D2248)\
+$git_branch\
+$git_status\
+[](bg:#7B3775 fg:#5A2D5C)\
+$python$nodejs$rust$golang$package\
+[](fg:#7B3775)\
+$fill\
+$cmd_duration\
+$battery\
+$time\
+$line_break\
+$character"""
 
 [directory]
-style = "bold fg:#A8E6CF"
-format = "[ 󰉖 $path]($style) "
+style = "bold fg:#FFE8F5 bg:#3D2248"
+format = "[ ♡ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
 [directory.substitutions]
-"Documents" = "󰈙 docs"
-"Downloads" = " dl"
-"Music" = "󰝚 music"
-"Pictures" = "󰉔 pics"
+"Documents" = "📄 docs"
+"Downloads" = "📥 dl"
+"Music" = "🎵 music"
+"Pictures" = "🖼️ pics"
+"Desktop" = "🖥️ desk"
 
 [git_branch]
 symbol = " "
-style = "bold fg:#7BC96F"
-format = "[on $symbol$branch]($style) "
+style = "bold fg:#FFB3D9 bg:#5A2D5C"
+format = "[ $symbol$branch ]($style)"
 
 [git_status]
-style = "fg:#8B5E3C"
-format = '([$all_status$ahead_behind]($style) )'
+style = "fg:#FF6EB4 bg:#5A2D5C"
+format = '([$all_status$ahead_behind ]($style))'
 conflicted = "⚡"
 ahead = "⇡${count}"
 behind = "⇣${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-untracked = "󰐕 "
-stashed = "󰆼 "
-modified = "󰏫 "
-staged = "[ ++$count](fg:#7BC96F)"
-renamed = "󰑕 "
-deleted = "󰍶 "
+untracked = "♡ "
+stashed = "📦"
+modified = "✎ "
+staged = "[++$count](fg:#FFB3D9 bg:#5A2D5C)"
+renamed = "➜ "
+deleted = "✘ "
 
 [character]
-success_symbol = "[❯](bold fg:#7BC96F)"
-error_symbol = "[❯](bold fg:#E06C75)"
-vimcmd_symbol = "[❮](bold fg:#A8E6CF)"
+success_symbol = "[❯](bold fg:#FF6EB4)"
+error_symbol = "[❯](bold fg:#FF4D6D)"
+vimcmd_symbol = "[❮](bold fg:#FFB3D9)"
+
+[fill]
+symbol = " "
+
+[time]
+disabled = false
+time_format = "%H:%M"
+style = "fg:#C090B0"
+format = "[ ♡ $time ]($style)"
+
+[cmd_duration]
+min_time = 2000
+style = "fg:#D084C0"
+format = "[ ⏱ $duration]($style) "
 
 [python]
-symbol = "󰌠 "
-style = "fg:#A8E6CF"
-format = "[${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
+symbol = "🐍"
+style = "fg:#FFB3D9 bg:#7B3775"
+format = "[ ${symbol} ${version} ]($style)"
 
 [nodejs]
-symbol = " "
-style = "fg:#7BC96F"
-format = "[$symbol($version )]($style)"
+symbol = "⬢"
+style = "fg:#FF6EB4 bg:#7B3775"
+format = "[ $symbol $version ]($style)"
 
 [rust]
-symbol = "󱘗 "
-style = "fg:#C8A96E"
-format = "[$symbol($version )]($style)"
+symbol = "🦀"
+style = "fg:#FFB347 bg:#7B3775"
+format = "[ $symbol $version ]($style)"
 
 [golang]
-symbol = "󰟓 "
-style = "fg:#A8E6CF"
-format = "[$symbol($version )]($style)"
+symbol = "🐹"
+style = "fg:#FFB3D9 bg:#7B3775"
+format = "[ $symbol $version ]($style)"
 
 [package]
-symbol = "󰏗 "
-style = "fg:#8B5E3C"
-format = "[$symbol$version]($style) "
+symbol = "📦"
+style = "fg:#D084C0 bg:#7B3775"
+format = "[ $symbol $version ]($style)"
 
 [battery]
-full_symbol = "󰁹 "
-charging_symbol = "󰂄 "
-discharging_symbol = "󰂃 "
-unknown_symbol = "󰁽 "
-empty_symbol = "󰂎 "
+full_symbol = "🔋"
+charging_symbol = "⚡"
+discharging_symbol = "🔋"
+unknown_symbol = "❓"
+empty_symbol = "💀"
 format = "[$symbol$percentage]($style) "
 
 [[battery.display]]
 threshold = 50
-style = "fg:#C8A96E"
+style = "fg:#FFB347"
 
 [[battery.display]]
 threshold = 20
-style = "bold fg:#E06C75"
-
-[cmd_duration]
-min_time = 2000
-style = "fg:#8B5E3C"
-format = "[ 󱎫 $duration]($style) "
+style = "bold fg:#FF4D6D"
 
 [username]
 show_always = false
-style_user = "fg:#7BC96F bold"
-style_root = "fg:#E06C75 bold"
-format = "[$user]($style) "
+style_user = "fg:#FF6EB4 bold"
+style_root = "fg:#FF4D6D bold"
+format = "[$user]($style)"
 
 [hostname]
 ssh_only = true
-style = "fg:#A8E6CF bold"
+style = "fg:#FFB3D9 bold"
 format = "[@$hostname]($style) "

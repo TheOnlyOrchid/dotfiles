@@ -10,6 +10,10 @@ PlasmoidItem {
     preferredRepresentation: fullRepresentation
 
     property int dayCount: 0
+    property string activeTheme: "sprigatito"
+    property color accentColor: activeTheme === "kawaiishell" ? "#FF6EB4" : "#7BC96F"
+    property color fgColor: activeTheme === "kawaiishell" ? "#FFE8F5" : "#F5F3E7"
+    property string emoji: activeTheme === "kawaiishell" ? "🎀" : "🌿"
 
     P5Support.DataSource {
         id: executable
@@ -17,7 +21,11 @@ PlasmoidItem {
         connectedSources: []
         onNewData: function(source, data) {
             var out = (data["stdout"] || "").trim()
-            if (out !== "") root.dayCount = parseInt(out) || 0
+            if (source.indexOf("incident") !== -1) {
+                if (out !== "") root.dayCount = parseInt(out) || 0
+            } else if (source.indexOf("active_theme") !== -1) {
+                root.activeTheme = out || "sprigatito"
+            }
             disconnectSource(source)
         }
     }
@@ -25,6 +33,7 @@ PlasmoidItem {
     function refreshDays() {
         var cmd = 'bash -c \'f="$HOME/.local/share/sprigatito-rice/incident_date"; [ -f "$f" ] && echo $(( ( $(date +%s) - $(date -d "$(cat $f)" +%s) ) / 86400 )) || echo 0\''
         executable.connectSource(cmd)
+        executable.connectSource('cat ~/.config/kawaiishell/active_theme')
     }
 
     Timer {
@@ -41,13 +50,16 @@ PlasmoidItem {
         implicitWidth: 240
         implicitHeight: 100
 
-        // Green border overlay — sits on top of Plasma's own rounded dark background
         Rectangle {
             anchors.fill: parent
             radius: 8
             color: "transparent"
-            border.color: "#7BC96F"
+            border.color: root.accentColor
             border.width: 2
+
+            Behavior on border.color {
+                ColorAnimation { duration: 400 }
+            }
         }
 
         ColumnLayout {
@@ -56,7 +68,7 @@ PlasmoidItem {
 
             Text {
                 Layout.alignment: Qt.AlignHCenter
-                text: "🌿"
+                text: root.emoji
                 font.pixelSize: 22
             }
 
@@ -65,15 +77,23 @@ PlasmoidItem {
                 text: root.dayCount
                 font.pixelSize: 38
                 font.bold: true
-                color: "#7BC96F"
+                color: root.accentColor
+
+                Behavior on color {
+                    ColorAnimation { duration: 400 }
+                }
             }
 
             Text {
                 Layout.alignment: Qt.AlignHCenter
                 text: "days since last incident"
                 font.pixelSize: 10
-                color: "#F5F3E7"
+                color: root.fgColor
                 opacity: 0.85
+
+                Behavior on color {
+                    ColorAnimation { duration: 400 }
+                }
             }
         }
     }

@@ -5,18 +5,35 @@ Number=2
 Rows=1
 
 [Effect-Blur]
-BlurStrength=4
-NoiseStrength=0
+BlurStrength=6
+NoiseStrength=3
+
+[Effect-DimInactive]
+Strength=15
+
+[Effect-Glide]
+InDistance=20
+InDuration=160
+OutDistance=35
+OutDuration=140
+
+[Effect-MagicLamp]
+AnimationDuration=250
 
 [Effect-Wobbly]
-Drag=85
-Stiffness=50
-WobblynessLevel=2
+Drag=70
+Stiffness=35
+WobblynessLevel=3
 
 [Plugins]
 blurEnabled=true
+diminactiveEnabled=true
+glideEnabled=true
 kwin4_effect_blurEnabled=true
+magiclampEnabled=true
 roundedcornersEnabled=true
+scaleEnabled=false
+squashEnabled=false
 wobblywindowsEnabled=true
 
 [Tiling][2f3394d5-f98a-4220-84c9-ea5eaadf6f34][e00d442b-3b01-419c-8e80-23491a6fc3fa]

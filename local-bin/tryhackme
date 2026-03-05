@@ -17,45 +17,42 @@ if [[ "$1" == "update" ]]; then
     NOTES_DIR="$HOME/Documents/cybernotes"
 
     if [[ ! -d "$NOTES_DIR/.git" ]]; then
-        echo -e "${G}🌿${RESET} ${C}cybernotes doesn't look like a git repo at $NOTES_DIR${RESET}"
+        echo -e "${G}🌿${RESET} ${C}cybernotes not found at $NOTES_DIR${RESET}"
         exit 1
     fi
 
     echo -e "${G}🌿${RESET} ${C}Syncing cybernotes...${RESET}"
     cd "$NOTES_DIR" || exit 1
     git add -A
-    git commit -m "$MSG"
-    git push
-    echo -e "${G}🌿${RESET} ${C}Done! Notes pushed to GitHub. Very professional.${RESET}"
+    git commit -m "$MSG" 2>&1 | grep -v "^$"
+    git push 2>&1 | tail -3
+    echo -e "${G}🌿${RESET} ${C}Done. Very professional.${RESET}"
     exit 0
 fi
 
 # ── Normal launch: open Firefox + Obsidian on workspace N ────────────────────
 WORKSPACE="${1:-2}"
 
-# Validate it's a number
 if ! [[ "$WORKSPACE" =~ ^[0-9]+$ ]]; then
-    echo -e "${G}🌿${RESET} Usage: ${C}tryhackme [workspace_number]${RESET}   (default: 2)"
+    echo -e "${G}🌿${RESET} Usage: ${C}tryhackme [workspace]${RESET}  ${D}(default: 2)${RESET}"
     echo -e "       ${C}tryhackme update \"message\"${RESET}"
     exit 1
 fi
 
-echo -e "${G}🌿${RESET} ${C}Switching to workspace ${WORKSPACE}...${RESET}"
+echo -e "${G}🌿${RESET} ${C}Study mode — workspace ${WORKSPACE}${RESET}"
 
-# Switch to the target desktop (0-indexed in KWin)
-WS_INDEX=$(( WORKSPACE - 1 ))
-qdbus6 org.kde.KWin /KWin setCurrentDesktop "$WS_INDEX" 2>/dev/null \
-    || wmctrl -s "$WS_INDEX" 2>/dev/null \
-    || echo -e "${D}  (couldn't switch desktop — do it manually if needed)${RESET}"
+# Switch desktop (KWin uses 1-indexed)
+qdbus6 org.kde.KWin /KWin org.kde.KWin.setCurrentDesktop "$WORKSPACE" &>/dev/null
 
-sleep 0.3
+sleep 0.4
 
-echo -e "${G}🌿${RESET} ${C}Launching Firefox → TryHackMe...${RESET}"
-firefox "https://tryhackme.com/dashboard" &
+# Launch fully detached so the terminal is freed immediately
+setsid firefox "https://tryhackme.com/dashboard" &>/dev/null &
+disown
 
-sleep 0.5
+sleep 0.4
 
-echo -e "${G}🌿${RESET} ${C}Opening Obsidian → cybernotes...${RESET}"
-obsidian "obsidian://open?vault=cybernotes" &
+setsid obsidian "obsidian://open?vault=cybernotes" &>/dev/null &
+disown
 
-echo -e "${G}🌿${RESET} ${D}Study mode engaged. No pressure. (Some pressure.)${RESET}"
+echo -e "${G}🌿${RESET} ${D}apps launched. go hack something.${RESET}"

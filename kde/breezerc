@@ -1,6 +1,7 @@
 [Common]
-ShadowSize=ShadowMedium
-ShadowStrength=60
+ShadowColor=255,110,180
+ShadowSize=ShadowLarge
+ShadowStrength=80
 
 [Windeco]
 DrawBackgroundGradient=false
